@@ -48,8 +48,11 @@
     "requestable" $requestable
   }}
   
-  {{ $path := print $department "/" $number }}}}
-  {{ $alias := print "/" $number }}}}
+  {{ $path := print $department "/" $number }}
+  {{ $alias := slice (print "/" $number) }}
+  {{ if $child }}
+    {{ $alias = append (print "/" $child) $alias }}
+  {{ end }}
 
   {{ $page := dict
       "content" $content
