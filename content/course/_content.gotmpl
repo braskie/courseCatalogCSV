@@ -18,30 +18,41 @@
 
 {{ range after 1 $data }}
 
-  {{ $course_number := index . 0 }}
-  {{ $course_name := index . 1 }}
-  {{ $course_description := index . 2 }}
-  {{ $department := index . 3 }}
-  {{ $repeatable := index . 4 }}
+  {{ $number              := index . 0 }}
+  {{ $name                := index . 1 }}
+  {{ $description         := index . 2 }}
+  {{ $department          := index . 3 }}
+  {{ $repeatable          := index . 4 }}
+  {{ $credits             := index . 5 }}
+  {{ $req_gradelevel      := index . 6 }}
+  {{ $req_prereq          := index . 7 }}
+  {{ $length            := index . 8 }}
 
   {{ $content := dict 
     "mediaType" "text/markdown" 
-    "value" $course_description 
+    "value" $description 
   }}
 
   {{ $params := dict 
-    "course_number" $course_number 
-    "department" $department 
+    "name" $name
+    "number" $number 
+    "department" $department
+    "repeatable" $repeatable
+    "credits" $credits
+    "req_gradelevel" $req_gradelevel
+    "req_prereq" $req_prereq
+    "length" $length
   }}
   
-  {{ $path := print $department "/" $course_number }}}}
+  {{ $path := print $department "/" $number }}}}
+  {{ $alias := print "/" $number }}}}
 
   {{ $page := dict
       "content" $content
       "params" $params
       "path" $path
-      "title" $course_number
-      "repeatable" $repeatable
+      "title" $number
+      "aliases" $alias
   }}
 
     {{ $.AddPage $page }}
