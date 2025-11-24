@@ -11,9 +11,9 @@
             <div style="float:right">
                 {{ with .Params.credits}}{{ partial "shortcodes/badge.html" (dict "content" . "color" "yellow" "icon" "plus-circle" "style" "float:right")}}{{ end }}
             </div>
-            {{ with .Title }}<h2>{{ . }}</h2>{{ end }}
-            {{ with .Params.name }}<h1>{{ . }}</h1>{{ end }}
-
+            <h2>{{ .Params.number }} {{ with .Params.child }}, {{ . }}{{ end }}</h2>
+            {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
+            
             <ul>
                 {{ with .Params.credits}}<li>Credits: {{ . }}</li>{{ end }}
                 {{ with .Params.req_gradelevel}}<li>Grade Level(s): {{ . }}</li>{{ end }}
@@ -24,15 +24,22 @@
                     <li>This course has <b>no prerequisites</b></li>
                 {{ end }}
                 {{ with .Params.repeatable}}<li>*This course is repeatable.</li>{{ end }}
-                {{ with .Params.requestable}}<li>*This course <b>not</b> requestable by students and will be added to all student schedules automatically.</li>{{ end }}
-            </ul>
+                {{ if .Params.req_prereq }}
+                    <li>*This course <b>not</b> requestable by students and will be added to all student schedules automatically.</li>
+                {{ end }}
+                </ul>
 
             <h2>Description</h2>
             {{ .Content }}
+            {{ if .Params.child }}
+                {{ partial "shortcodes/callout.html" (dict "content" .Params.child) }}
+            {{ end }}
 
             <!-- DEBUG-->
+            <!--
             <pre>{{ debug.Dump .Params }}</pre>
             <pre>{{ debug.Dump . }}</pre>
+            -->
             
         </div>
         {{ partial "components/last-updated.html" . }}
