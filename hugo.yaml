@@ -4,3 +4,11 @@ title: SPASD Course Catalog
 module:
   imports:
     - path: github.com/imfing/hextra
+menu:
+  main:
+    - name: Search
+      params:
+        type: search
+params:
+  page:
+    width: wide
