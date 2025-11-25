@@ -6,8 +6,11 @@
     @example {{< coursetable sortBy="Params.name">}}
 */ -}}
 
-
+{{- $filterBy := .Get "filterBy" | default "" }}
 {{- $sortBy := .Get "sortBy" | default "Params.number" -}}
+
+{{ $filteredPages := where .Site.RegularPages "Params.honors" "AP" }}
+<pre>{{ range $filteredPages }}.{{end}}</pre>
 
 <table class="table-auto" style="display: table;">
     <thead>

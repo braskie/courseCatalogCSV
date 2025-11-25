@@ -24,6 +24,7 @@
                     {{ else }}
                     <li>This course has <b>no prerequisites</b></li>
                 {{ end }}
+                {{ with .Params.honors }}<li>Honors: {{ . }}</li>{{ end }}
             </ul>
             <ul>
                 {{ with .Params.repeatable}}<li>*This course is repeatable.</li>{{ end }}
@@ -36,10 +37,10 @@
             {{ .Content }}
 
             <!-- DEBUG-->
-            <!--
+            
             <pre>{{ debug.Dump .Params }}</pre>
             <pre>{{ debug.Dump . }}</pre>
-            -->
+            
             
         </div>
         {{ partial "components/last-updated.html" . }}
