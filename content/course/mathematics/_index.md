@@ -9,17 +9,26 @@ To strengthen all students’ natural curiosity as problem-solvers by developing
 
 ```mermaid
 flowchart TD;
-    3265MTH{{Math I}}
+    3465MTH{{Math I}}
+    click 3465MTH "/3465MTH"
     3369MTH{{Geometry}}
+    click 3369MTH "/3369MTH"
     3485MTH[Algebra 2]
+    click 3485MTH "/3485MTH"
     3493MTH[Functions and Trigonometry]
+    click 3493MTH "/3493MTH"
     3383MTH[Math Reasoning]
+    click 3383MTH "/3383MTH"
     3688MTH[Consumer Math]
+    click 3688MTH "/3688MTH"
     3588MTH[Pre-Calculus]
+    click 3588MTH "/3588MTH"
     3005MTH[AP Statistics]
+    click 3005MTH "/3005MTH"
     3013MTH[Statistics]
+    click 3013MTH "/3013MTH"
 
-    3265MTH-->3369MTH;
+    3465MTH-->3369MTH;
     3369MTH-->3485MTH;
     3369MTH-->3383MTH;
     3369MTH-->3688MTH;
