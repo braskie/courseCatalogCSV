@@ -27,6 +27,15 @@ flowchart TD;
     click 3005MTH "/3005MTH"
     3013MTH[Statistics]
     click 3013MTH "/3013MTH"
+    3596MTH[AP Calculus AB]
+    3598MTH[AP Calculus BC]
+    3474COMP[Compacted AP Calculus AB/BC]
+
+    subgraph Calculus
+        direction TB
+        3596MTH-->3598MTH
+        3474COMP
+    end
 
     3465MTH-->3369MTH;
     3369MTH-->3485MTH;
@@ -37,6 +46,7 @@ flowchart TD;
     3485MTH-->3005MTH;
     3485MTH-->3493MTH;
     3588MTH-->Calculus;
+
 
 ```
 
