@@ -14,7 +14,7 @@
             <h2>{{ .Params.number }}{{ with .Params.child }}, {{ . }}{{ end }}</h2>
             {{ with .Title }}<h1>{{ . }}</h1>{{ end }}
             
-            <ul>
+            <ul style="--hextra-cards-grid-cols: 3;"class="hextra-cards hx:mt-4 hx:gap-4 hx:grid not-prose">
                 {{ if .Params.required}}<li>Required</li>{{else}}<li>Elective</li>{{ end }}
                 {{ with .Params.credits}}<li>Credits: {{ . }}</li>{{ end }}
                 {{ with .Params.req_gradelevel}}<li>Grade Level(s): {{ . }}</li>{{ end }}
@@ -24,20 +24,22 @@
                     {{ else }}
                     <li>This course has <b>no prerequisites</b></li>
                 {{ end }}
+            </ul>
+            <ul>
                 {{ with .Params.repeatable}}<li>*This course is repeatable.</li>{{ end }}
                 {{ if not .Params.requestable }}
                     <li>*This course <b>not</b> requestable by students.</li>
                 {{ end }}
-                </ul>
+            </ul>
 
             <h2>Description</h2>
             {{ .Content }}
 
             <!-- DEBUG-->
-            
+            <!--
             <pre>{{ debug.Dump .Params }}</pre>
             <pre>{{ debug.Dump . }}</pre>
-            
+            -->
             
         </div>
         {{ partial "components/last-updated.html" . }}
