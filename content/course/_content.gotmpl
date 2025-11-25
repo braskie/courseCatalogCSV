@@ -30,6 +30,7 @@
   {{ $length              := index . 9 }}
   {{ $requestable         := index . 10 }}
   {{ $required            := index . 11 }}
+  {{ $honors              := index . 12 }}
 
   {{ $content := dict 
     "mediaType" "text/markdown" 
@@ -48,6 +49,7 @@
     "length" $length
     "requestable" $requestable
     "required" $required
+    "honors" $honors
   }}
   
   {{ $path := print $department "/" $number }}
