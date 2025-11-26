@@ -44,7 +44,7 @@ from v_CourseGradingTask gt
 , prereqs AS (
 select distinct
     c1.number course_number
-    ,transcriptCourseNumberString prereqs
+    ,CONCAT('[',transcriptCourseNumberString,']') prereqs
 from CoursePrerequisite pr
     inner join course c1 on c1.courseid = pr.courseid
     inner join Calendar cal on cal.calendarID = c1.calendarID
