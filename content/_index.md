@@ -13,5 +13,6 @@ The course entries are representative of the kinds of data found in the district
 The site is built with the Hugo static site generator: course pages, department sections, menus, and search data are produced from structured data (CSV/YAML/remote sheets) and Hugo templates/shortcodes at build time, meaning pages are generated from the data rather than written by hand.
 
 ## Courses
+
 [See the catalog](/course)
 <!-- TODO add catalog text -->
