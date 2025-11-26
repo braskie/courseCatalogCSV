@@ -15,3 +15,4 @@ params:
   banner:
     key: "warning"
     message: This site is an example SPASD course catalog and should **not be considered an authoritative source**.
+  externalLinkDecoration: true
