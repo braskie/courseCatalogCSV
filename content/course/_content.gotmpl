@@ -1,12 +1,8 @@
 {{/* Get remote data. */}}
 
 {{ $data := dict }}
-{{ $url := "https://docs.google.com/spreadsheets/d/e/2PACX-1vQR09leHgbJ4uQ2pY0nJE_RoPhRibYa_uRm4hcyMe5ze5TUhpBK2WIt-zGyz_cSwr80dBI5iK3-LnaI/pub?gid=0&single=true&output=csv" }}
-{{ $seed := now.Unix }}
-{{ $randUrl := (printf "&rando=%s" (printf "%.10s" (sha256 $seed)) | printf "%s%s" $url | printf "%s") }}
-
-
-{{ with try (resources.GetRemote $randUrl) }}
+{{ $url := "https://gohugo.io/shared/examples/data/books.json" }}
+{{ with try (resources.GetRemote $url) }}
   {{ with .Err }}
     {{ errorf "Unable to get remote resource %s: %s" $url . }}
   {{ else with .Value }}
@@ -16,53 +12,39 @@
   {{ end }}
 {{ end }}
 
-{{ range after 1 $data }}
-
-  {{ $number              := index . 0 }}
-  {{ $child               := index . 1 }}
-  {{ $name                := index . 2 }}
-  {{ $description         := index . 3 }}
-  {{ $department          := index . 4 }}
-  {{ $repeatable          := index . 5 }}
-  {{ $credits             := index . 6 }}
-  {{ $req_gradelevel      := index . 7 }}
-  {{ $req_prereq          := index . 8 }}
-  {{ $length              := index . 9 }}
-  {{ $requestable         := index . 10 }}
-  {{ $required            := index . 11 }}
-  {{ $honors              := index . 12 }}
+{{ range $data }}
 
   {{ $content := dict 
-    "mediaType" "text/markdown" 
-    "value" $description 
+    "mediaType" "text/html" 
+    "value" .description 
   }}
 
   {{ $params := dict 
-    "name" $name
-    "child" $child
-    "number" $number 
-    "department" $department
-    "repeatable" $repeatable
-    "credits" $credits
-    "req_gradelevel" $req_gradelevel
-    "req_prereq" $req_prereq
-    "length" $length
-    "requestable" $requestable
-    "required" $required
-    "honors" $honors
+    "name" .name
+    "child" .child
+    "number" .number 
+    "department" .department
+    "repeatable" .repeatable
+    "credits" .credits
+    "req_gradelevel" .req_gradelevel
+    "req_prereq" .req_prereq
+    "length" .length
+    "requestable" .requestable
+    "required" .required
+    "honors" .honors
   }}
   
-  {{ $path := print $department "/" $number }}
-  {{ $alias := slice (print "/" $number) }}
-  {{ if $child }}
-    {{ $alias = append (print "/" $child) $alias }}
+  {{ $path := print .department "/" .number }}
+  {{ $alias := slice (print "/" .number) }}
+  {{ if .child }}
+    {{ $alias = append (print "/" .child) $alias }}
   {{ end }}
 
   {{ $page := dict
       "content" $content
       "params" $params
       "path" $path
-      "title" $name
+      "title" .name
       "aliases" $alias
   }}
 

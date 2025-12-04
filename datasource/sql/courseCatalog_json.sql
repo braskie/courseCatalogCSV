@@ -57,15 +57,15 @@ from CoursePrerequisite pr
 
 
 select
-    number course_number
+    number number
     ,ISNULL(co.course2number, '') child
-    ,name course_name
-    ,sunprairie_custom.dbo.udf_StripHTML([description]) as course_description
+    ,name name
+    ,sunprairie_custom.dbo.udf_StripHTML([description]) as description
     ,department
     ,[repeatable]
     ,FORMAT(ISNULL(cr1.credit, 0) + ISNULL(cr2.credit, 0), '0.0###') credits --check this math. It probabl isn't the best way to do this
-    ,isnull(gl.grade_level, '') grade_level
-    ,isnull(pr.prereqs, '') CoursePrerequisite
+    ,isnull(gl.grade_level, '') req_gradelevel
+    ,isnull(pr.prereqs, '') req_prereq
     ,'' duration
     ,requestable
     ,case cm.type when 'R' then 'Required' when 'E' then 'Elective' else 'UnknownType'end [required]
