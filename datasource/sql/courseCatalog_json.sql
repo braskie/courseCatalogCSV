@@ -58,18 +58,18 @@ from CoursePrerequisite pr
 
 select
     number number
-    ,ISNULL(co.course2number, '') child
+    ,co.course2number child
     ,name name
     ,[description] as description
     ,department
     ,[repeatable]
     ,FORMAT(ISNULL(cr1.credit, 0) + ISNULL(cr2.credit, 0), '0.0###') credits --check this math. It probabl isn't the best way to do this
-    ,isnull(gl.grade_level, '') req_gradelevel
-    ,isnull(pr.prereqs, '') req_prereq
+    ,gl.grade_level req_gradelevel
+    ,pr.prereqs req_prereq
     ,'' duration
     ,requestable
     ,case cm.type when 'R' then 'Required' when 'E' then 'Elective' else 'UnknownType'end [required]
-    ,isnull(honorsCode, '') honors
+    ,honorsCode honors
 from coursemaster cm
     left join children co on co.course1number = cm.number and co.[type] = 'PO'
     left join children po on po.course1number = cm.number and po.[type] = 'CO'
@@ -101,4 +101,4 @@ where
     )
     and number not like '%/%'
     and requestable = 1
-FOR JSON PATH
+FOR JSON PATH, INCLUDE_NULL_VALUES;
