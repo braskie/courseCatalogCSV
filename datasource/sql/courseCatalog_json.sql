@@ -60,7 +60,7 @@ select
     number number
     ,ISNULL(co.course2number, '') child
     ,name name
-    ,sunprairie_custom.dbo.udf_StripHTML([description]) as description
+    ,[description] as description
     ,department
     ,[repeatable]
     ,FORMAT(ISNULL(cr1.credit, 0) + ISNULL(cr2.credit, 0), '0.0###') credits --check this math. It probabl isn't the best way to do this

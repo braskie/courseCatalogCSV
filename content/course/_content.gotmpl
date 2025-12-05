@@ -1,3 +1,4 @@
+
 {{ $data := dict }}
 {{ $path := "data/courses.json" }}
 
@@ -9,10 +10,10 @@
   {{ errorf "Unable to get global resource %q" $path }}
 {{ end }}
 
-{{ range $data }}
+{{ range $data}}
 
   {{ $content := dict 
-    "mediaType" "text/html" 
+    "mediaType" "text/markdown" 
     "value" .description 
   }}
 
