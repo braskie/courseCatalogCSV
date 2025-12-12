@@ -1,0 +1,21 @@
+{{/* layouts/_shortcodes/courselink.html */}}
+
+
+{{ $number := cond (.IsNamedParams) (.Get "number") (.Get 0) }}
+
+{{ $data := dict }}
+{{ $path := "data/courses.json" }}
+
+
+{{ with resources.Get $path }}
+  {{ with . | transform.Unmarshal }}
+    {{ $data = . }}
+  {{ end }}
+{{ else }}
+  {{ errorf "Unable to get global resource %q" $path }}
+{{ end }}
+
+{{ range where $data "number" $number }}
+{{ $page := .Site.GetPage .Get $number }}
+    <a href="/{{ $number }}">{{ .number }}{{with .child }}, {{ . }}{{ end }} {{ .name }}</a><sup>📚</sup>
+{{ end }}
