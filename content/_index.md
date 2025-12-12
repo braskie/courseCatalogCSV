@@ -4,9 +4,8 @@ draft: false
 title: 'Prairie Sun Course Catalog'
 ---
 
-{{< callout type="warning" >}}
-This site is an example course catalog and should **not be considered an authoritative source**.
-{{< /callout >}}
+> [!CAUTION]
+> This site is an example course catalog and should **not be considered an authoritative source**.
 
 The course entries are representative of the kinds of data found in the district but are not guaranteed accurate — I'm currently working on wiring an automated, accurate data pull directly from the Infinite Campus SIS so the listings will reflect official information in the future.
 
