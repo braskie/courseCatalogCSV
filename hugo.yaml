@@ -8,9 +8,9 @@ module:
 menu:
   main:
     - name: Graduation Requirements
-      pagref: /graduation/requirements
+      pageref: /graduation/requirements
     - name: Catalog
-      pagref: /course
+      pageref: /course
     - name: Search
       params:
         type: search
